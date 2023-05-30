@@ -103,13 +103,16 @@
       }
     }
 
-    dataPushed()
+    dataPushed();
 
     insert?.addEventListener("click", () => {
       const val = document.querySelector('input').value;
-      const result = friendData.find((data) => data.name === val)
+      const result = friendData.find((data) => data.name === val || data.degree === val)
 
-      dataPushed(result)
+      console.log(result?.srNo.length > 0, "result");
+
+      result?.srNo.length > 0 && dataPushed(result);
+
       const htmlData = `<tr>
           <td scope="row">${result?.srNo}</th>
           <td>${result?.name}</td>
@@ -117,9 +120,10 @@
           <td>${result?.profession}</td>
         </tr>`
 
-      tableBody.insertAdjacentHTML("beforeend",
-        htmlData,
-      )
+      result?.srNo.length > 0 &&
+        tableBody.insertAdjacentHTML("beforeend",
+          htmlData,
+        )
     })
     // window.addEventListener("load", () => {
     //   mainFunc()
