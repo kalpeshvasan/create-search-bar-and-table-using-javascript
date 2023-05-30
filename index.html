@@ -108,9 +108,6 @@
     insert?.addEventListener("click", () => {
       const val = document.querySelector('input').value;
       const result = friendData.find((data) => data.name === val || data.degree === val)
-
-      console.log(result?.srNo.length > 0, "result");
-
       result?.srNo.length > 0 && dataPushed(result);
 
       const htmlData = `<tr>
